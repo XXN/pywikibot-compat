@@ -10468,17 +10468,21 @@ cookieProcessor = urllib2.HTTPCookieProcessor(cj)
 MyURLopener = urllib2.build_opener(U2RedirectHandler)
 
 if config.proxy['host']:
-    proxyHandler = urllib2.ProxyHandler({'http': 'http://%s/' % config.proxy['host'],
-                                         'https': 'https://%s' % config.proxy['host']})
+    if config.proxy['auth']:
+        proxy = {
+            'host': config.proxy['host'],
+            'user': urllib.quote(config.proxy['auth'][0], safe=''),
+            'pass': urllib.quote(config.proxy['auth'][1], safe='')
+        }
+        credentials_and_host = '%(user)s:%(pass)s@%(host)s' % proxy
+    else:
+        credentials_and_host = config.proxy['host']
+
+    proxyHandler = urllib2.ProxyHandler(
+        {'http': 'http://%s/' % credentials_and_host,
+         'https': 'https://%s/' % credentials_and_host})
 
     MyURLopener.add_handler(proxyHandler)
-    if config.proxy['auth']:
-        proxyAuth = urllib2.HTTPPasswordMgrWithDefaultRealm()
-        proxyAuth.add_password(None, config.proxy['host'],
-                               config.proxy['auth'][0], config.proxy['auth'][1])
-        proxyAuthHandler = urllib2.ProxyBasicAuthHandler(proxyAuth)
-
-        MyURLopener.add_handler(proxyAuthHandler)
 
 if config.authenticate:
     passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
@@ -10490,6 +10494,8 @@ if config.authenticate:
     MyURLopener.add_handler(authhandler)
 
 MyURLopener.addheaders = [('User-agent', useragent)]
+
+urllib2.install_opener(MyURLopener)
 
 # The following will monkey-patch the pywikibot module to contain the same
 # functions and variables as wikipedia itself. This means we no longer have
