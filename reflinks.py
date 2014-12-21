@@ -34,7 +34,7 @@ See [[:en:User:DumZiBoT/refLinks]] for more information on the bot.
 # (C) 2008 - Nicolas Dumazet ( en:User:NicDumZ )
 # (C) Pywikipedia bot team, 2008-2013
 #
-# Distributed under the terms of the GPL
+# Distributed under the terms of the MIT license.
 #
 __version__ = '$Id$'
 #
