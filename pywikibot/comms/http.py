@@ -83,9 +83,12 @@ def request(site, uri, retry=None, sysop=False, data=None, compress=True,
 
     if retry is None:
         retry = config.retry_on_fail
-
+    if hasattr(site, '_userName') and site._userName[0]:
+        user_name = urllib.quote(site._userName[0])
+    else:
+        user_name = 'Unknown'
     headers = {
-        'User-agent': useragent,
+        'User-agent': '%s %s' % (useragent, user_name),
         #'Accept-Language': config.mylang,
         #'Accept-Charset': config.textfile_encoding,
         #'Keep-Alive': '115',
@@ -93,7 +96,6 @@ def request(site, uri, retry=None, sysop=False, data=None, compress=True,
         #'Cache-Control': 'max-age=0',
         #'': '',
     }
-
     if not no_hostname and site.cookies(sysop = sysop):
         headers['Cookie'] = site.cookies(sysop = sysop)
     if compress:
@@ -239,7 +241,7 @@ def request(site, uri, retry=None, sysop=False, data=None, compress=True,
                                 u'replaced by \\ufffd.' % uri)
             else:
                 pywikibot.error(u'Invalid characters found on %s://%s%s, '
-                    u'replaced by \\ufffd.' 
+                    u'replaced by \\ufffd.'
                     % (site.protocol(), site.hostname(), uri))
         # We use error='replace' in case of bad encoding.
         text = unicode(text, charset, errors = 'replace')
