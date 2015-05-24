@@ -1,7 +1,7 @@
 [submodule "i18n"]
     path = i18n
     url = https://gerrit.wikimedia.org/r/p/pywikibot/i18n.git
-    branch = .
+    branch = compat
     ignore = all
 [submodule "externals/spelling"]
     path = externals/spelling
