@@ -1,5 +1,5 @@
 # -*- coding: utf-8  -*-
-""" Module to determine the pywikibot version (tag, revision and date).
+"""Module to determine the pywikibot version (tag, revision and date).
 
 This module must not be loaded before the module wikipedia, otherwise
 the proxy configuration does not have any effect, and the urllib2 open
@@ -12,8 +12,8 @@ as that would create a cyclic dependency.
 """
 #
 # (C) Merlijn 'valhallasw' van Deen, 2007-2014
-# (C) xqt, 2010-2014
-# (C) Pywikibot team, 2007-2013
+# (C) xqt, 2010-2015
+# (C) Pywikibot team, 2007-2015
 #
 # Distributed under the terms of the MIT license.
 #
@@ -31,7 +31,7 @@ cache = None
 
 class ParseError(Exception):
 
-    """ Parsing went wrong. """
+    """Parsing went wrong."""
 
 
 def _get_program_dir():
@@ -40,10 +40,11 @@ def _get_program_dir():
 
 
 def getversion(online=True):
-    """Return a pywikibot version string
+    """Return a pywikibot version string.
+
     @param online: (optional) Include information obtained online
     """
-    data = dict(getversiondict())  # copy dict to prevent changes in 'chache'
+    data = dict(getversiondict())  # copy dict to prevent changes in 'cache'
     data['cmp_ver'] = 'n/a'
 
     if online:
@@ -59,6 +60,15 @@ def getversion(online=True):
 
 
 def getversiondict():
+    """Get version info for the package.
+
+    @return:
+        - tag (name for the repository),
+        - rev (current revision identifier),
+        - date (date of current revision),
+        - hash (git hash for the current revision)
+    @rtype: C{dict} of four C{str}
+    """
     global cache
     if cache:
         return cache
@@ -122,14 +132,40 @@ def getversion_git_windows(hsh, path=None):
 
 
 def getversion_svn(path=None):
+    """Get version info for a Subversion checkout.
+
+    @param path: directory of the Subversion checkout
+    @return:
+        - tag (name for the repository),
+        - rev (current Subversion revision identifier),
+        - date (date of current revision),
+        - hash (git hash for the Subversion revision)
+    @rtype: C{tuple} of three C{str} and a C{time.struct_time}
+    """
     import httplib
     import xml.dom.minidom
     _program_dir = path or _get_program_dir()
-    entries = open(os.path.join(_program_dir, '.svn/entries'))
-    version = entries.readline().strip()
+    filename = os.path.join(_program_dir, '.svn/entries')
+    found = False
+    if os.path.isfile(filename):
+        with open(filename) as entries:
+            version = entries.readline().strip()
+            if version != '12':
+                for i in range(3):
+                    entries.readline()
+                tag = entries.readline().strip()
+                t = tag.split('://')
+                t[1] = t[1].replace('svn.wikimedia.org/svnroot/pywikipedia/',
+                                    '')
+                tag = '[%s] %s' % (t[0], t[1])
+                for i in range(4):
+                    entries.readline()
+                date = time.strptime(entries.readline()[:19],
+                                     '%Y-%m-%dT%H:%M:%S')
+                rev = entries.readline()[:-1]
+                found = True
     # use sqlite table for new entries format
-    if version == "12":
-        entries.close()
+    if not found:
         from sqlite3 import dbapi2 as sqlite
         con = sqlite.connect(os.path.join(_program_dir, ".svn/wc.db"))
         cur = con.cursor()
@@ -142,18 +178,7 @@ order by revision desc, changed_date desc""")
         con.close()
         tag = os.path.split(tag)[1]
         date = time.gmtime(date / 1000000)
-    else:
-        for i in range(3):
-            entries.readline()
-        tag = entries.readline().strip()
-        t = tag.split('://')
-        t[1] = t[1].replace('svn.wikimedia.org/svnroot/pywikipedia/', '')
-        tag = '[%s] %s' % (t[0], t[1])
-        for i in range(4):
-            entries.readline()
-        date = time.strptime(entries.readline()[:19], '%Y-%m-%dT%H:%M:%S')
-        rev = entries.readline()[:-1]
-        entries.close()
+
     conn = httplib.HTTPSConnection('github.com')
     conn.request('PROPFIND', '/wikimedia/%s/!svn/vcc/default' % tag,
                  "<?xml version='1.0' encoding='utf-8'?>"
@@ -172,6 +197,16 @@ order by revision desc, changed_date desc""")
 
 
 def getversion_git(path=None):
+    """Get version info for a Git clone.
+
+    @param path: directory of the Git checkout
+    @return:
+        - tag (name for the repository),
+        - rev (current revision identifier),
+        - date (date of current revision),
+        - hash (git hash for the current revision)
+    @rtype: C{tuple} of three C{str} and a C{time.struct_time}
+    """
     _program_dir = path or _get_program_dir()
     cmd = 'git'
     rev = None
@@ -222,6 +257,15 @@ def getversion_git(path=None):
 
 
 def getversion_nightly():
+    """Get version info for a nightly release.
+
+    @return:
+        - tag (name for the repository),
+        - rev (current revision identifier),
+        - date (date of current revision),
+        - hash (git hash for the current revision)
+    @rtype: C{tuple} of three C{str} and a C{time.struct_time}
+    """
     import wikipediatools
     try:
         data = open(os.path.join(wikipediatools.get_base_dir(), 'version'))
@@ -254,12 +298,20 @@ def getversion_onlinerepo(repo=None):
 
 
 def getfileversion(filename):
-    """ Retrieve revision number of file (__version__ variable containing Id tag)
-        without importing it (thus can be done for any file)
+    """ Retrieve revision number of file.
+
+    Extracts __version__ variable containing Id tag, without importing it.
+    (thus can be done for any file)
+
+    The version variable containing the Id tag is read and
+    returned. Because it doesn't import it, the version can
+    be retrieved from any file.
+    @param filename: Name of the file to get version
+    @type filename: string
     """
     _program_dir = _get_program_dir()
     __version__ = None
-    size, mtime = None, None
+    mtime = None
     fn = os.path.join(_program_dir, filename)
     if os.path.exists(fn):
         for line in open(fn, 'r').readlines():
