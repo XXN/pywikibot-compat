@@ -126,7 +126,7 @@ stopme(): Put this on a bot when it is not or not communicating with the Wiki
 
 """
 #
-# (C) Pywikipedia bot team, 2003-2013
+# (C) Pywikibot team, 2003-2015
 #
 # Distributed under the terms of the MIT license.
 #
@@ -196,8 +196,8 @@ SaxError = xml.sax._exceptions.SAXParseException
 
 # Pre-compile re expressions
 reNamespace = re.compile("^(.+?) *: *(.*)$")
-Rwatch = re.compile(
-    r"<input type='hidden' value=\"(.*?)\" name=\"wpEditToken\"")
+Rtoken = re.compile(
+    r'<input type="hidden" value="(.*?)" name="wpEditToken"')
 Rwatchlist = re.compile(r"<input tabindex='[\d]+' type='checkbox' "
                         r"name='wpWatchthis' checked='checked'")
 Rlink = re.compile(r'\[\[(?P<title>[^\]\|\[]*)(\|[^\]]*)?\]\]')
@@ -7507,9 +7507,7 @@ sysopnames['%s']['%s']='name' to your user-config.py"""
                                         'unwatchedpages'])
 
         # Search for a token
-        tokenR = re.compile(
-            r"\<input type='hidden' value=\"(.*?)\" name=\"wpEditToken\"")
-        tokenloc = tokenR.search(text)
+        tokenloc = Rtoken.search(text)
         if tokenloc:
             self._token[index] = tokenloc.group(1)
             if self._rights[index] is not None:
