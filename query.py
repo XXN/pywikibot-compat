@@ -80,6 +80,9 @@ def GetData(params, site=None, useAPI=True, retryCount=config.maxretries,
     if 'format' not in params or params['format'] != u'json':
         params['format'] = u'json'
 
+    if not ('continue' in params or 'rawcontinue' in params):
+        params['rawcontinue'] = ''
+
     if not useAPI:
         params['noprofile'] = ''
 
