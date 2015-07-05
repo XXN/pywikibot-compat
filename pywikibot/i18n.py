@@ -335,7 +335,15 @@ def twtranslate(code, twtitle, parameters=None):
         import table.
     """
     package = twtitle.split("-")[0]
-    transdict = getattr(__import__("i18n", {}, {}, [package]), package).msg
+    try:
+        transdict = getattr(__import__("i18n", {}, {}, [package]), package).msg
+    except AttributeError:
+        raise TranslationError("No translation file '%s' has been defined\n"
+                               "for TranslateWiki key %r.\n"
+                               "Please run the  maintenance script "
+                               "'i18n_from_json.py'\ninside  maintenance "
+                               "folder to generate the files."
+                               % (package, twtitle))
 
     code_needed = False
     # If a site is given instead of a code, use its language
