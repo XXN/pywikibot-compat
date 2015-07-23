@@ -159,6 +159,8 @@ class ConvertJsonBot(object):
         """Read old authors from file."""
         self.authors = {}
         translators = []
+        if not os.path.exists(self.dest):
+            return
         f = codecs.open(self.dest, "r", "utf-8")
         findcode = False
         while True:
