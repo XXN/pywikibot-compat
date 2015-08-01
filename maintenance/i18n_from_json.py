@@ -70,8 +70,9 @@ class ConvertJsonBot(object):
         if self.source is None:
             self.confirm = False
             source = os.path.join('..', 'i18n')
-            for root, dirs, files in os.walk(source):
-                for d in dirs:
+            root, dirs, files = next(os.walk(source))
+            for d in dirs:
+                if not d.startswith('.'):
                     self.treat(d)
         else:
             self.treat(self.source)
