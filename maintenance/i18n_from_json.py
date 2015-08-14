@@ -40,7 +40,7 @@ plain_format = (
     'unlink-unlinking',
 )
 
-# map the language code to teh corresponding site code
+# map the language code to the corresponding site code
 codemap = {
     'be-tarask': 'be-x-old',
     'bho': 'bh',
