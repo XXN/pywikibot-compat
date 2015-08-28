@@ -174,7 +174,7 @@ badword at all but can be used for some bad-nickname.
 # (C) Daniel Herding, 2007
 # (C) Alex Shih-Han Lin, 2009-2010
 # (C) xqt, 2009-2011
-# (C) Pywikipedia bot team, 2008-2010
+# (C) Pywikibot team, 2008-2015
 #
 # Distributed under the terms of the MIT license.
 #
@@ -263,6 +263,7 @@ netext = {
         'zh-yue': u'{{歡迎}}--%s',
     },
     'wikinews': {
+        'ar': u'{{subst:ترحيب}} %s',
         'fa': u'{{خوشامد۲|%s}}',
         'it': u'{{subst:benvenuto}}',
         'zh': u'{{subst:welcome}} %s',
