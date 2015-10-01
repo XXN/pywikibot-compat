@@ -18,9 +18,11 @@ class Family(family.Family):
             'ca': 'ca.vikidia.org',
             'en': 'en.vikidia.org',
             'es': 'es.vikidia.org',
+            'eu': 'eu.vikidia.org',
             'fr': 'fr.vikidia.org',
             'it': 'it.vikidia.org',
             'ru': 'ru.vikidia.org',
+            'scn': 'scn.vikidia.org',
         }
 
         self.namespaces[1] = {
@@ -111,7 +113,7 @@ class Family(family.Family):
     # Which version of MediaWiki is used? REQUIRED
     def version(self, code):
         """Return the version for this family."""
-        return '1.24.2'
+        return '1.25.2'
 
     def code2encoding(self, code):
         """Return the encoding for a specific language wiki."""
