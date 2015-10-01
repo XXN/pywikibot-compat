@@ -95,7 +95,7 @@ class Connection(object):
             pass
 
     def cursor(self, cursorclass=MySQLdb.cursors.Cursor):
-        if type(cursorclass) is not type(self.__cursor):
+        if type(cursorclass) is not type(self.__cursor):  # noqa
             self.__cursor = self.database.cursor(cursorclass)
         return self
 
