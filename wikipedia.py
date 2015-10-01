@@ -9983,13 +9983,15 @@ def init_handlers(strm=None):  # , logname=None, header=False):
     global logger  # _handlers_initialized
 
     if not logger:
+        # for messages to be displayed on terminal at "verbose" setting
+        # use INFO for messages to be displayed even on non-verbose setting
         logging.addLevelName(VERBOSE, "VERBOSE")
-            # for messages to be displayed on terminal at "verbose" setting
-            # use INFO for messages to be displayed even on non-verbose setting
+
+        # for messages to be displayed to stdout
         logging.addLevelName(STDOUT, "STDOUT")
-            # for messages to be displayed to stdout
+
+        # for prompts requiring user response
         logging.addLevelName(INPUT, "INPUT")
-            # for prompts requiring user response
 
         logger = logging.getLogger()  # root logger
 
@@ -10418,8 +10420,9 @@ def _flush():
 
     """
     def remaining():
+        # -1 because we added a None element to stop the queue
         remainingPages = page_put_queue.qsize() - 1
-            # -1 because we added a None element to stop the queue
+
         remainingSeconds = datetime.timedelta(
             seconds=(remainingPages * put_throttle.getDelay(True)))
         return (remainingPages, remainingSeconds)

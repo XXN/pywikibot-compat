@@ -59,10 +59,11 @@ from pagegenerators import RegexFilterPageGenerator as RPG
 
 
 def main(*args):
+    # default is left out because it may occur within switch only.
     words = ['expr', 'if', 'ifeq', 'ifexpr', 'iferror', 'switch', 'ifexist',
              'time', 'timel', 'rel2abs', 'titleparts', 'len', 'pos', 'rpos',
              'sub', 'count', 'replace', 'explode', 'urldecode']
-            # default is left out because it may occur within switch only.
+
     addwords = {
         # Write translated parser function names here.
         'hu': [u'kif', u'ha', u'haegyenlő', u'hakif', u'hahibás', u'halétezik',

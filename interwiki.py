@@ -1442,7 +1442,7 @@ u'WARNING: %s is in namespace %i, but %s is in namespace %i. Follow it anyway?'
                 # FIXME: What errors are we catching here?
                 # except: should be avoided!!
                 except:
-                   #raise
+                    #raise
                     pywikibot.output(u'File autonomous_problems.dat open or '
                                      u'corrupted! Try again with -restore.')
                     sys.exit()

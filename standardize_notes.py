@@ -625,10 +625,11 @@ class ReplaceRobot:
                                     text_line = (
                                         text_line[:m.start(0)] +
                                         '{{ref_label|%s|%d|%s}}'
-                                        % (refkey, (refusage[refkey][0]) + 1,
-                                           string.ascii_lowercase[
-                                               ((refusage[refkey][2]) - 1) % 26
-                                           ]) + text_line[m.end(0):])
+                                        % (
+                                            refkey,
+                                            (refusage[refkey][0]) + 1,
+                                            string.ascii_lowercase[((refusage[refkey][2]) - 1) % 26]
+                                        ) + text_line[m.end(0):])
                                     # count use of reference
                                     refusage[refkey][2] += 1
                             else:

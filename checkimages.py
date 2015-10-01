@@ -1441,8 +1441,8 @@ class checkImagesBot(object):
 
                 if self.allLicenses:
                     self.license_found = self.allLicenses[0].title()
-        self.some_problem = False  # If it has "some_problem" it must check
-                                   # the additional settings.
+        # If it has "some_problem" it must check the additional settings.
+        self.some_problem = False
 
         if self.settingsData:
             # use additional settings
