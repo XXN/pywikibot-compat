@@ -12,8 +12,8 @@ each link that goes to a redirect page whether it should be replaced.
 #
 __version__ = '$Id$'
 #
-import sys
 import re
+
 import pywikibot
 import pagegenerators
 

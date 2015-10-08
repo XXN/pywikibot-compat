@@ -84,19 +84,15 @@ __version__ = '$Id$'
 #
 
 from Tkinter import *
-import os
 import sys
 import re
 import codecs
 import urllib2
 from urllib import urlencode
-import httplib
 import webbrowser
-import time
 import threading
 import socket
 import wikipedia as pywikibot
-import config
 import pagegenerators
 import add_text
 from upload import *

@@ -17,7 +17,6 @@ __version__ = '$Id$'
 #
 
 import wikipedia as pywikibot
-import config
 
 # The summary that the Bot will use.
 comment = {

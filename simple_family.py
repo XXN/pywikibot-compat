@@ -12,7 +12,6 @@
 # Distributed under the terms of the MIT license.
 #
 
-import config
 import family
 
 

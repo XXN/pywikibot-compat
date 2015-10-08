@@ -314,7 +314,7 @@ def ListToParam(list):
             encList += ToUtf8(item.title()) + u'|'
         elif item.__class__.__name__ == 'User':
             # delay loading this until it is needed
-            import userlib
+            import userlib  # noqa
             encList += ToUtf8(item.name()) + u'|'
         else:
             raise pywikibot.Error(u'unknown item class %s'

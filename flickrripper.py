@@ -31,7 +31,6 @@ Todo:
 #
 __version__ = '$Id$'
 
-import sys
 import urllib2
 from urllib import urlencode
 import re
@@ -39,13 +38,11 @@ import StringIO
 import hashlib
 import base64
 import time
+
 import wikipedia as pywikibot
 import config
-import query
-import imagerecat
 import upload
 import flickrapi                  # see: http://stuvel.eu/projects/flickrapi
-import xml.etree.ElementTree
 from Tkinter import *
 from PIL import Image, ImageTk    # see: http://www.pythonware.com/products/pil/
 
@@ -73,9 +70,10 @@ def getPhoto(flickr=None, photo_id=''):
     while not gotPhoto:
         try:
             photoInfo = flickr.photos_getInfo(photo_id=photo_id)
-            #xml.etree.ElementTree.dump(photoInfo)
+            # import xml.etree.ElementTree
+            # xml.etree.ElementTree.dump(photoInfo)
             photoSizes = flickr.photos_getSizes(photo_id=photo_id)
-            #xml.etree.ElementTree.dump(photoSizes)
+            # xml.etree.ElementTree.dump(photoSizes)
             gotPhoto = True
         except flickrapi.exceptions.FlickrError:
             gotPhotos = False

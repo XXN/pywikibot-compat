@@ -17,8 +17,7 @@ __version__ = '$Id$'
 
 import sys
 import datetime
-import time
-import traceback
+
 import wikipedia as pywikibot
 import editarticle
 

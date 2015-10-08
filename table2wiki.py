@@ -56,7 +56,6 @@ __version__ = '$Id$'
 #
 
 import re
-import time
 
 import wikipedia as pywikibot
 from pywikibot import i18n
