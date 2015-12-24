@@ -85,7 +85,6 @@ import string
 import datetime
 import hashlib
 import locale
-import logging
 import urllib
 from xml.etree.cElementTree import XML
 # or if cElementTree not found, you can use BeautifulStoneSoup instead

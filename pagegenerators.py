@@ -24,7 +24,6 @@ import re
 import codecs
 import date
 import datetime
-import time
 import traceback
 import wikipedia as pywikibot
 import config
@@ -32,7 +31,6 @@ from pywikibot import i18n
 from pywikibot.support import deprecate_arg
 import catlib
 import userlib
-import query
 
 parameterHelp = u"""\
 -cat              Work on all pages which are in a specific category.

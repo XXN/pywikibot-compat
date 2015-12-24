@@ -12,19 +12,17 @@ Tool to copy a Panoramio set to Commons
 #
 __version__ = '$Id$'
 
-import sys
 import urllib2
 import re
 import StringIO
 import hashlib
 import base64
-import time
 
 import wikipedia as pywikibot
 import config
 import imagerecat
 import upload
-import externals  # check for and install needed
+import externals  # noqa: check for and install needed
 try:
     import json
 except ImportError:

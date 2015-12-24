@@ -13,11 +13,11 @@ __version__ = '$Id$'
 #
 #
 
-import os
 import sys
-import re
+
 from datetime import datetime
 from datetime import timedelta
+
 import pywikibot
 import pagegenerators
 import query

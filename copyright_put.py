@@ -9,7 +9,6 @@ __version__ = '$Id$'
 # Distributed under the terms of the MIT license.
 #
 
-import sys
 import re
 import codecs
 import os

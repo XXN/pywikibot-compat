@@ -158,7 +158,7 @@ import htmlentitydefs
 import warnings
 import unicodedata
 import xmlreader
-import externals  # allow imports from externals
+import externals  # noqa: allow imports from externals
 from BeautifulSoup import BeautifulSoup, BeautifulStoneSoup, SoupStrainer
 import weakref
 import logging

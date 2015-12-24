@@ -29,7 +29,7 @@ cwd = os.getcwd()
 os.chdir(settings.pywikipedia_path)
 import wikipedia as pywikibot
 import login
-from simple_family import Family
+import simple_family
 os.chdir(cwd)
 
 
@@ -76,7 +76,7 @@ class LoginData:
         self.lang = lang
         self.user = user
         self.password = password
-        self.family = base_family.Family(
+        self.family = simple_family.Family(
             name=name,
             protocol=protocol,
             server=server,

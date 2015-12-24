@@ -13,7 +13,6 @@ __version__ = '$Id$'
 
 import sys
 import re
-import time
 
 import wikipedia as pywikibot
 import catlib

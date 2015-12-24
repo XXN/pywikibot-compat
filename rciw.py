@@ -30,8 +30,9 @@ __version__ = '$Id$'
 
 import threading
 import re
-import time
+
 from Queue import Queue
+
 import wikipedia as pywikibot
 import interwiki
 

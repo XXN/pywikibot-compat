@@ -47,9 +47,9 @@ config.mylang = 'en'
 os.path.exists = oldexists
 
 # Now we can boot the framework
-import wikipedia
+import wikipedia  # noqa
 import family
-import externals                            # check for and install needed
+import externals  # noqa: check for and install needed
 
 # parsing response data
 from BeautifulSoup import BeautifulSoup

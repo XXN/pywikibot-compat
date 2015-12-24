@@ -740,7 +740,7 @@ class SubsterBot(basic.AutoBasicBot):
         # http://www.mail-archive.com/python-list@python.org/msg209447.html
 
         import odf
-        from odf import opendocument, table, teletype
+        from odf import opendocument, table, teletype  # noqa
 
         doc = odf.opendocument.load(StringIO.StringIO(external_buffer))
 
