@@ -17,9 +17,9 @@ class Family(family.WikimediaFamily):
         self.name = 'wikinews'
 
         self.languages_by_size = [
-            'sr', 'en', 'fr', 'de', 'pl', 'es', 'pt', 'ru', 'it', 'zh', 'ta',
-            'el', 'ca', 'cs', 'sv', 'ar', 'fa', 'ro', 'uk', 'tr', 'ja', 'sq',
-            'no', 'ko', 'eo', 'fi', 'bs', 'he', 'bg',
+            'sr', 'en', 'fr', 'de', 'pl', 'pt', 'es', 'ru', 'it', 'zh', 'ca',
+            'ta', 'cs', 'el', 'sv', 'ar', 'fa', 'ro', 'uk', 'tr', 'ja', 'sq',
+            'no', 'eo', 'ko', 'fi', 'bs', 'he', 'bg',
         ]
 
         self.langs = dict([(lang, '%s.wikinews.org' % lang)

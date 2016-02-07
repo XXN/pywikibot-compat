@@ -16,12 +16,12 @@ class Family(family.WikimediaFamily):
         self.name = 'wikisource'
 
         self.languages_by_size = [
-            'fr', 'en', 'de', 'ru', 'he', 'zh', 'pl', 'it', 'es', 'ar', 'sv',
-            'cs', 'pt', 'fa', 'ca', 'hu', 'ml', 'ko', 'sl', 'ro', 'te', 'sr',
-            'fi', 'vi', 'hy', 'sa', 'el', 'hr', 'th', 'bn', 'no', 'is', 'gu',
-            'ja', 'nl', 'la', 'az', 'br', 'vec', 'eo', 'uk', 'tr', 'mk', 'yi',
-            'ta', 'be', 'id', 'da', 'li', 'et', 'as', 'mr', 'bg', 'bs', 'sah',
-            'kn', 'gl', 'lt', 'cy', 'sk', 'zh-min-nan', 'fo', 'or',
+            'en', 'de', 'ru', 'fr', 'he', 'zh', 'pl', 'es', 'it', 'ar', 'cs',
+            'pt', 'fa', 'hu', 'ml', 'ko', 'sv', 'sl', 'te', 'ro', 'gu', 'fi',
+            'sr', 'sa', 'vi', 'el', 'ca', 'bn', 'hy', 'th', 'hr', 'ja', 'nl',
+            'is', 'br', 'az', 'no', 'la', 'uk', 'vec', 'eo', 'tr', 'be', 'mk',
+            'ta', 'yi', 'id', 'da', 'et', 'li', 'as', 'bg', 'mr', 'kn', 'bs',
+            'sah', 'lt', 'gl', 'or', 'cy', 'sk', 'zh-min-nan', 'fo',
         ]
 
         self.langs = dict([(lang, '%s.wikisource.org' % lang)
