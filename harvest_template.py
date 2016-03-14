@@ -14,8 +14,8 @@ python harvest_template.py -lang:nl -cat:Sisoridae -template:"Taxobox straalvinn
 
 """
 #
-# (C) 2013 Multichill, Amir
-# (C) 2013 Pywikibot team
+# (C) Multichill, Amir, 2013
+# (C) Pywikibot team, 2013-2016
 #
 # Distributed under the terms of MIT License.
 #
@@ -28,11 +28,12 @@ import pagegenerators
 
 
 class HarvestRobot:
-    """
-    A bot to add Wikidata claims
-    """
+    """A bot to add Wikidata claims."""
+
     def __init__(self, generator, templateTitle, fields):
         """
+        Constructor.
+
         Arguments:
             * generator     - A generator that yields Page objects.
             * templateTitle - The template to work on
@@ -84,9 +85,7 @@ class HarvestRobot:
             self.procesPage(page)
 
     def procesPage(self, page):
-        """
-        Proces a single page
-        """
+        """Process a single page/item."""
         item = pywikibot.DataPage(page)
         pywikibot.output('Processing %s' % page)
         if not item.exists():
@@ -127,12 +126,12 @@ class HarvestRobot:
                                         pywikibot.output('Adding %s --> %s'
                                                          % (claim,
                                                             linkedItem.getID()))
-                                        if self.setSource(self.site().language()):
+                                        refs = self.setSource(self.site().language())
+                                        if refs:
                                             item.editclaim(
                                                 str(claim),
                                                 linkedItem.getID(),
-                                                refs={self.setSource(
-                                                    self.site().language())})
+                                                refs=set(refs))
                                         else:
                                             item.editclaim(str(claim),
                                                            linkedItem.getID())
