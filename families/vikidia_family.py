@@ -16,6 +16,8 @@ class Family(family.Family):
 
         self.langs = {
             'ca': 'ca.vikidia.org',
+            'central': 'central.vikidia.org',
+            'de': 'de.vikidia.org',
             'en': 'en.vikidia.org',
             'es': 'es.vikidia.org',
             'eu': 'eu.vikidia.org',
@@ -23,6 +25,7 @@ class Family(family.Family):
             'it': 'it.vikidia.org',
             'ru': 'ru.vikidia.org',
             'scn': 'scn.vikidia.org',
+            'test': 'test.vikidia.org',
         }
 
         self.namespaces[1] = {
