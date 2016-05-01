@@ -65,7 +65,7 @@ class Family(family.Family):
         }
         self.namespaces[15] = {
             'fr': [u'Discussion catégorie', u'Discussion Catégorie'],
-            'es': u'Conversación acerca de categor�a'
+            'es': u'Conversación acerca de categoria'
         }
         self.namespaces[100] = {
             'fr': u'Projet',
