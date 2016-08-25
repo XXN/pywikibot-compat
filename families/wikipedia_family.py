@@ -659,11 +659,11 @@ class Family(family.WikimediaFamily):
         }
 
         self.namespaces[90] = {
-            'hu': u'Téma',
+            'hu': u'Szál',
         }
 
         self.namespaces[91] = {
-            'hu': u'Témavita',
+            'hu': u'Szálvita',
         }
 
         self.namespaces[92] = {
@@ -1117,11 +1117,28 @@ class Family(family.WikimediaFamily):
             'pt': u'TimedText talk',
         }
 
+        self.namespaces[2300] = {
+            'hu': u'Gadget',
+        }
+
+        self.namespaces[2301] = {
+            'hu': u'Gadget talk',
+        }
+
+        self.namespaces[2302] = {
+            'hu': u'Gadget definition',
+        }
+
+        self.namespaces[2303] = {
+            'hu': u'Gadget definition talk',
+        }
+
         self.namespaces[2600] = {
             'ca': u'Topic',
             'en': u'Topic',
             'fr': u'Sujet',
             'he': u'נושא',
+            'hu': u'Téma',
             'pa': u'Topic',
             'pt': u'Tópico',
             'ru': u'Тема',
