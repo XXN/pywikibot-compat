@@ -973,7 +973,6 @@ class Family(family.WikimediaFamily):
 
         self.namespaces[104] = {
             'als': u'Wort',
-            'ar': u'ملحق',
             'bar': u'Woat',
             'es': u'Anexo',
             'fi': u'Kirja',
@@ -987,7 +986,6 @@ class Family(family.WikimediaFamily):
 
         self.namespaces[105] = {
             'als': u'Wort Diskussion',
-            'ar': u'نقاش الملحق',
             'bar': u'Woat Dischkrian',
             'es': u'Anexo Discusión',
             'fi': u'Keskustelu kirjasta',
@@ -1119,21 +1117,26 @@ class Family(family.WikimediaFamily):
 
         self.namespaces[2300] = {
             'hu': u'Gadget',
+            'ar': u'إضافة',
         }
 
         self.namespaces[2301] = {
             'hu': u'Gadget talk',
+            'ar': u'نقاش الإضافة',
         }
 
         self.namespaces[2302] = {
             'hu': u'Gadget definition',
+            'ar': u'تعريف الإضافة',
         }
 
         self.namespaces[2303] = {
             'hu': u'Gadget definition talk',
+            'ar': u'نقاش تعريف الإضافة',
         }
 
         self.namespaces[2600] = {
+            'ar': u'موضوع',
             'ca': u'Topic',
             'en': u'Topic',
             'fr': u'Sujet',
@@ -1262,7 +1265,7 @@ class Family(family.WikimediaFamily):
             'als': u'Begriffsklärung',
             'ang': u'Scīrung',
             'ast': u'Dixebra',
-            'ar':  u'صفحات توضيح',
+            'ar':  u'توضيح',
             'be':  u'Disambig',
             'be-x-old':  u'Вікіпэдыя:Неадназначнасьці',
             'bg':  u'Пояснителни страници',
@@ -1586,11 +1589,6 @@ class Family(family.WikimediaFamily):
                 'pt': [0, 102],
                 'hr': [0, 102],
             },
-            'ar': {
-                '_default': [0, 100],
-                'hr': [0, 102],
-                'pt': [0, 102],
-            },
             'es': {
                 '_default': [0],
                 'pt': [0, 102],
@@ -1612,9 +1610,6 @@ class Family(family.WikimediaFamily):
                 '_default': [1],
                 'pt': [0, 103],
                 'hr': [0, 103],
-            },
-            'ar': {
-                '_default': [1, 101],
             },
             'es': {
                 '_default': [1],
