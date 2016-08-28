@@ -2417,7 +2417,7 @@ class Page(object):
                 if errorCode == 'maxlag' or response.code == 503:
                     # server lag; wait for the lag time and retry
                     lagpattern = re.compile(
-                        r"Waiting for [\d.]+: (?P<lag>\d+) seconds? lagged")
+                        r'Waiting for [\w. ]+: (?P<lag>\d+)(?:\.\d+)? seconds? lagged')
                     lag = lagpattern.search(data['error']['info'])
                     timelag = int(lag.group("lag"))
                     output(u"Pausing %d seconds due to database server lag."
