@@ -7,7 +7,7 @@ and return a unicode string.
 
 """
 #
-# (C) Pywikibot team, 2004-2013
+# (C) Pywikibot team, 2004-2016
 #
 # Distributed under the terms of the MIT license.
 #
@@ -69,6 +69,7 @@ def replaceExcept(text, old, new, exceptions, caseInsensitive=False,
         # preformatted text
         'pre':          re.compile(r'(?ism)<pre>.*?</pre>'),
         'source':       re.compile(r'(?is)<source .*?</source>'),
+        'score':        re.compile(r'(?is)<score.*?</score>'),
         # inline references
         'ref':          re.compile(r'(?ism)<ref[ >].*?</ref>'),
         # lines that start with a space are shown in a monospace font and
