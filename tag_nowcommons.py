@@ -10,7 +10,6 @@ Bot tag tag files available at Commons with the Nowcommons template.
 # Distributed under the terms of the MIT license.
 #
 __version__ = '$Id$'
-#
 
 import sys
 import wikipedia as pywikibot
@@ -48,6 +47,13 @@ skips = {
                ],
         'fy': [u'NowCommons',
                u'Nowcommons',
+               ],
+        'ru': [u'NowCommons',
+               u'Now Commons',
+               u'FoP-Russia',
+              ],
+        'uk': [u'NowCommons',
+               u'Now Commons',
                ],
     },
 }
